@@ -1,11 +1,12 @@
 import React from 'react'
-
-const NewPost = () => {
+import { useParams } from 'react-router-dom'
+const Post = () => {
+  const {id}=useParams()
   return (
     <main>
-        <h1>Post</h1>
+        <h1>Post {id}</h1>
     </main>
   )
 }
 
-export default NewPost
+export default Post

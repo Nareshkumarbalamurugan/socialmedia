@@ -6,6 +6,7 @@ import NewPost from './NewPost';
 import Missing from './Missing';
 import PostPage from './PostPage';
 import Post from './Post'
+import PostLayout from './PostLayout';
 
 const App = () => {
   return (
@@ -19,12 +20,15 @@ const App = () => {
           </ul>
         </nav>
       <Routes>
-        <Route path="/" element={<Home />} />  {/* ✅ No exact needed in React Router v6 */}
+        <Route path="/" element={<Home />} /> 
         <Route path="/about" element={<About />} />
         <Route path="/newpost" element={<NewPost />} />
-        <Route path="*" element={<Missing />} /> {/* ✅ 404 Page */}
-        <Route path="/postpage" element={<PostPage/>} /> 
-        <Route path="/postpage/:id" element={<Post/>} /> 
+        <Route path='/postpage' element={<PostLayout/>}>
+          <Route path="/postpage" element={<PostPage/>} /> 
+          <Route path=":id" element={<Post/>} /> 
+          <Route path="newpost" element={<NewPost/>} />
+        </Route> 
+        <Route path='*' element={<Missing/>}/>
         {/*
       <Header/>
       <Nav/>
